@@ -20,3 +20,15 @@ export const SORT_OPTIONS = [
   { value: 'priority', label: 'Priority' },
   { value: 'progress', label: 'Progress' }
 ];
+
+export const STATUS_COLOR = {
+  todo: 'bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-slate-800/60 dark:text-slate-200 dark:ring-slate-700',
+  in_progress: 'bg-amber-100 text-amber-800 ring-1 ring-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:ring-amber-700',
+  done: 'bg-emerald-100 text-emerald-800 ring-1 ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:ring-emerald-700'
+};
+
+export const PRIORITY_COLOR = {
+  low: 'bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-slate-800/60 dark:text-slate-200 dark:ring-slate-700',
+  medium: 'bg-indigo-100 text-indigo-800 ring-1 ring-indigo-200 dark:bg-indigo-500/15 dark:text-indigo-300 dark:ring-indigo-700',
+  high: 'bg-rose-100 text-rose-800 ring-1 ring-rose-200 dark:bg-rose-500/15 dark:text-rose-300 dark:ring-rose-700'
+};

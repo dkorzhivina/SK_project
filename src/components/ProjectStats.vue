@@ -1,49 +1,40 @@
 <template>
-  <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-    <h2 class="text-lg font-semibold text-gray-900 mb-4">Project Overview</h2>
-    
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="text-center">
-        <div class="text-2xl font-bold text-blue-600">{{ stats.total }}</div>
-        <div class="text-sm text-gray-500">Total Projects</div>
+  <div>
+    <h3 class="section-title">Project Overview</h3>
+    <div class="grid grid-3">
+      <div class="card">
+        <div style="font-size:.85rem;color:var(--muted);">Total Projects</div>
+        <div style="font-size:1.6rem;font-weight:800;margin-top:.2rem">{{ stats.total }}</div>
       </div>
-      
-      <div class="text-center">
-        <div class="text-2xl font-bold text-green-600">{{ stats.completed }}</div>
-        <div class="text-sm text-gray-500">Completed</div>
+      <div class="card">
+        <div style="font-size:.85rem;color:var(--muted);">Completed</div>
+        <div style="font-size:1.6rem;font-weight:800;margin-top:.2rem">{{ stats.completed }}</div>
       </div>
-      
-      <div class="text-center">
-        <div class="text-2xl font-bold text-yellow-600">{{ stats.inProgress }}</div>
-        <div class="text-sm text-gray-500">In Progress</div>
+      <div class="card">
+        <div style="font-size:.85rem;color:var(--muted);">In Progress</div>
+        <div style="font-size:1.6rem;font-weight:800;margin-top:.2rem">{{ stats.inProgress }}</div>
       </div>
-      
-      <div class="text-center">
-        <div class="text-2xl font-bold text-purple-600">{{ stats.avgProgress }}%</div>
-        <div class="text-sm text-gray-500">Avg Progress</div>
+      <div class="card">
+        <div style="font-size:.85rem;color:var(--muted);">Avg Progress</div>
+        <div style="font-size:1.6rem;font-weight:800;margin-top:.2rem">{{ stats.avgProgress }}%</div>
+        <div class="progress" style="margin-top:.6rem"><span :style="{ width: stats.avgProgress + '%' }"></span></div>
       </div>
-    </div>
-    
-    <div class="mt-4">
-      <div class="flex justify-between text-sm text-gray-600 mb-1">
-        <span>Overall Completion</span>
-        <span>{{ stats.completionRate }}%</span>
+      <div class="card">
+        <div style="font-size:.85rem;color:var(--muted);">Overall Completion</div>
+        <div style="font-size:1.6rem;font-weight:800;margin-top:.2rem">{{ stats.overallCompletion }}%</div>
+        <div class="progress" style="margin-top:.6rem"><span :style="{ width: stats.overallCompletion + '%' }"></span></div>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-2">
-        <div 
-          class="bg-blue-600 h-2 rounded-full transition-all duration-300 ease-out"
-          :style="{ width: `${stats.completionRate}%` }"
-        ></div>
+      <div class="card">
+        <div style="font-size:.85rem;color:var(--muted);">Active vs Done</div>
+        <div style="display:flex; gap:.5rem; margin-top:.5rem;">
+          <span class="badge status-in_progress">active: {{ stats.inProgress }}</span>
+          <span class="badge status-done">done: {{ stats.completed }}</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-defineProps({
-  stats: {
-    type: Object,
-    required: true
-  }
-});
+defineProps({ stats: { type: Object, required: true } })
 </script>
