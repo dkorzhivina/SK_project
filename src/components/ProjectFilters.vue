@@ -2,53 +2,53 @@
   <div>
     <div class="grid grid-3">
       <div>
-        <label class="form-label">Search</label>
-        <input v-model.trim="filters.search" type="text" class="input" placeholder="Search by name or tag"/>
+        <label class="form-label">Поиск</label>
+        <input v-model.trim="filters.search" type="text" class="input" placeholder="Поиск по названию или тегу"/>
       </div>
 
       <div>
-        <label class="form-label">Status</label>
+        <label class="form-label">Статус</label>
         <select v-model="filters.status" class="select">
-          <option value="all">All</option>
-          <option value="todo">To Do</option>
-          <option value="in_progress">In Progress</option>
-          <option value="done">Done</option>
+          <option value="all">Все</option>
+          <option value="todo">К выполнению</option>
+          <option value="in_progress">В работе</option>
+          <option value="done">Готово</option>
         </select>
       </div>
 
       <div>
-        <label class="form-label">Priority</label>
+        <label class="form-label">Приоритет</label>
         <select v-model="filters.priority" class="select">
-          <option value="all">All</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
+          <option value="all">Все</option>
+          <option value="low">Низкий</option>
+          <option value="medium">Средний</option>
+          <option value="high">Высокий</option>
         </select>
       </div>
     </div>
 
     <div class="grid grid-2" style="margin-top:.9rem;">
       <div>
-        <label class="form-label">Sort field</label>
+        <label class="form-label">Поле сортировки</label>
         <select v-model="filters.sortBy" class="select">
-          <option value="updatedAt">Updated</option>
-          <option value="createdAt">Created</option>
-          <option value="priority">Priority</option>
-          <option value="progress">Progress</option>
+          <option value="updatedAt">Обновление</option>
+          <option value="createdAt">Создание</option>
+          <option value="priority">Приоритет</option>
+          <option value="progress">Прогресс</option>
         </select>
       </div>
       <div>
-        <label class="form-label">Order</label>
+        <label class="form-label">Порядок</label>
         <select v-model="filters.sortOrder" class="select">
-          <option value="desc">Desc</option>
-          <option value="asc">Asc</option>
+          <option value="desc">По убыванию</option>
+          <option value="asc">По возрастанию</option>
         </select>
       </div>
     </div>
 
     <div style="margin-top:1rem; display:flex; gap:.6rem; justify-content:flex-end;">
-      <button class="btn" @click="$emit('reset')">Reset</button>
-      <button class="btn btn-primary" @click="emitApply">Apply</button>
+      <button class="btn" @click="$emit('reset')">Сбросить</button>
+      <button class="btn btn-primary" @click="emitApply">Применить</button>
     </div>
   </div>
 </template>

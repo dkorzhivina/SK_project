@@ -1,13 +1,13 @@
 <template>
   <div class="page">
     <div class="container">
-      <h1 class="h-title">Vue Project Tracker</h1>
+      <h1 class="h-title">Система Контроля</h1>
 
       <div class="header">
         <div style="flex:1"></div>
         <div class="header-actions">
-          <button class="btn btn-primary" @click="openCreate = true">+ New project</button>
-          <button class="btn btn-ghost btn-icon" @click="toggleTheme" :title="isDark ? 'Light' : 'Dark'">
+          <button class="btn btn-primary" @click="openCreate = true">+ Новый проект</button>
+          <button class="btn btn-ghost btn-icon" @click="toggleTheme" :title="isDark ? 'Светлая тема' : 'Тёмная тема'">
             <span v-if="!isDark">🌙</span><span v-else>☀️</span>
           </button>
         </div>
@@ -32,17 +32,19 @@
       </div>
 
       <div v-else class="empty" style="margin-top:1rem;">
-        <p>No projects found. Try creating one!</p>
-        <button class="btn btn-primary" style="margin-top:.75rem" @click="openCreate = true">Create project</button>
+        <p>Проектов пока нет. Создайте первый!</p>
+        <button class="btn btn-primary" style="margin-top:.75rem" @click="openCreate = true">Создать проект</button>
       </div>
     </div>
 
-    <!-- Drawer -->
+    <!-- Дровер -->
     <div v-if="openCreate || opened">
       <div class="overlay" @click="closeAll"></div>
       <div class="drawer">
         <div class="drawer-head">
-          <h2 style="margin:0;font-size:1.1rem;font-weight:700">{{ opened ? 'Edit project' : 'New project' }}</h2>
+          <h2 style="margin:0;font-size:1.1rem;font-weight:700">
+            {{ opened ? 'Редактирование проекта' : 'Новый проект' }}
+          </h2>
           <button class="btn btn-ghost btn-icon" @click="closeAll">✕</button>
         </div>
         <div class="drawer-body">
