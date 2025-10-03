@@ -249,3 +249,50 @@
   text-align:center; padding: 1.25rem; border:2px dashed var(--border);
   border-radius: 14px; color: var(--muted); background: var(--surface);
 }
+
+/* ===== UI Select (темный серо-голубой стиль) ===== */
+.ui-select { position: relative; width: 100%; }
+.ui-select__control{
+  width:100%;
+  border:1px solid var(--border);
+  background: #0f172a12;
+  color: var(--text);
+  padding:.7em .9em;
+  border-radius:12px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:.6rem; cursor:pointer;
+  transition: box-shadow .2s, border-color .2s, background .2s;
+}
+.ui-select.is-open .ui-select__control,
+.ui-select__control:focus-visible{
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+.ui-select__value.is-placeholder{ opacity:.6; }
+.ui-select__arrow{ opacity:.7; }
+
+.ui-select__popover{
+  position:absolute; left:0; right:0; z-index: 30; margin-top:.35rem;
+  background: var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px; box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.ui-select__search{ padding:.6rem; border-bottom:1px solid var(--border); background: var(--surface-2); }
+.ui-select__menu{ list-style:none; margin:0; padding:.35rem; max-height:240px; overflow:auto; }
+
+.ui-option{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:.55rem .65rem; border-radius:10px; cursor:pointer;
+  transition: background .12s, color .12s;
+}
+.ui-option.is-active{ background: #0f172a0e; }
+.ui-option.is-selected{ background: #0f172a12; font-weight:700; }
+.ui-option--empty{ opacity:.7; cursor:default; }
+
+.ui-check{ opacity:.8; }
+
+/* плавное появление */
+.fade-scale-enter-active,.fade-scale-leave-active{ transition: all .12s ease; }
+.fade-scale-enter-from{ opacity:0; transform: translateY(-4px) scale(.98); }
+.fade-scale-leave-to{ opacity:0; transform: translateY(-4px) scale(.98); }

@@ -18,20 +18,26 @@
     <div class="grid grid-3" style="margin-bottom:.75rem;">
       <div>
         <label class="form-label">Статус</label>
-        <select v-model="form.status" class="select">
-          <option value="todo">К выполнению</option>
-          <option value="in_progress">В работе</option>
-          <option value="done">Готово</option>
-        </select>
+        <UiSelect
+          v-model="form.status"
+          :options="statusOptions"
+          placeholder="Выберите статус"
+          :searchable="true"
+          search-placeholder="Поиск статуса…"
+        />
       </div>
+
       <div>
         <label class="form-label">Приоритет</label>
-        <select v-model="form.priority" class="select">
-          <option value="low">Низкий</option>
-          <option value="medium">Средний</option>
-          <option value="high">Высокий</option>
-        </select>
+        <UiSelect
+          v-model="form.priority"
+          :options="priorityOptions"
+          placeholder="Выберите приоритет"
+          :searchable="true"
+          search-placeholder="Поиск приоритета…"
+        />
       </div>
+
       <div>
         <label class="form-label">Прогресс (%)</label>
         <input v-model.number="form.progress" type="number" min="0" max="100" class="input"/>
@@ -70,6 +76,7 @@
 <script setup>
 import { reactive, computed, watch } from 'vue'
 import { validateProject, hasErrors } from '../utils/validation'
+import UiSelect from './ui/UiSelect.vue'
 
 const props = defineProps({ initial: { type: Object, default: null } })
 const emit = defineEmits(['submit','cancel'])
@@ -100,4 +107,16 @@ function onSubmit() {
   Object.assign(errors, e)
   if (!hasErrors(errors)) emit('submit', { ...form, tags: [...form.tags] })
 }
+
+/* Опции для выпадающих списков (ярлык — на русском, значение — прежнее) */
+const statusOptions = [
+  { value: 'todo', label: 'К выполнению' },
+  { value: 'in_progress', label: 'В работе' },
+  { value: 'done', label: 'Готово' }
+]
+const priorityOptions = [
+  { value: 'low', label: 'Низкий' },
+  { value: 'medium', label: 'Средний' },
+  { value: 'high', label: 'Высокий' }
+]
 </script>

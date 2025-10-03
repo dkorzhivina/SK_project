@@ -8,41 +8,43 @@
 
       <div>
         <label class="form-label">Статус</label>
-        <select v-model="filters.status" class="select">
-          <option value="all">Все</option>
-          <option value="todo">К выполнению</option>
-          <option value="in_progress">В работе</option>
-          <option value="done">Готово</option>
-        </select>
+        <UiSelect
+          v-model="filters.status"
+          :options="statusOptions"
+          placeholder="Все"
+          :searchable="true"
+          search-placeholder="Поиск статуса…"
+        />
       </div>
 
       <div>
         <label class="form-label">Приоритет</label>
-        <select v-model="filters.priority" class="select">
-          <option value="all">Все</option>
-          <option value="low">Низкий</option>
-          <option value="medium">Средний</option>
-          <option value="high">Высокий</option>
-        </select>
+        <UiSelect
+          v-model="filters.priority"
+          :options="priorityOptions"
+          placeholder="Все"
+          :searchable="true"
+          search-placeholder="Поиск приоритета…"
+        />
       </div>
     </div>
 
     <div class="grid grid-2" style="margin-top:.9rem;">
       <div>
         <label class="form-label">Поле сортировки</label>
-        <select v-model="filters.sortBy" class="select">
-          <option value="updatedAt">Обновление</option>
-          <option value="createdAt">Создание</option>
-          <option value="priority">Приоритет</option>
-          <option value="progress">Прогресс</option>
-        </select>
+        <UiSelect
+          v-model="filters.sortBy"
+          :options="sortByOptions"
+          :searchable="false"
+        />
       </div>
       <div>
         <label class="form-label">Порядок</label>
-        <select v-model="filters.sortOrder" class="select">
-          <option value="desc">По убыванию</option>
-          <option value="asc">По возрастанию</option>
-        </select>
+        <UiSelect
+          v-model="filters.sortOrder"
+          :options="orderOptions"
+          :searchable="false"
+        />
       </div>
     </div>
 
@@ -54,7 +56,32 @@
 </template>
 
 <script setup>
+import UiSelect from './ui/UiSelect.vue'
+
 const props = defineProps({ filters: { type: Object, required: true } })
 const emit = defineEmits(['apply','reset'])
 function emitApply(){ emit('apply', props.filters) }
+
+const statusOptions = [
+  { value: 'all', label: 'Все' },
+  { value: 'todo', label: 'К выполнению' },
+  { value: 'in_progress', label: 'В работе' },
+  { value: 'done', label: 'Готово' }
+]
+const priorityOptions = [
+  { value: 'all', label: 'Все' },
+  { value: 'low', label: 'Низкий' },
+  { value: 'medium', label: 'Средний' },
+  { value: 'high', label: 'Высокий' }
+]
+const sortByOptions = [
+  { value: 'updatedAt', label: 'Обновление' },
+  { value: 'createdAt', label: 'Создание' },
+  { value: 'priority', label: 'Приоритет' },
+  { value: 'progress', label: 'Прогресс' }
+]
+const orderOptions = [
+  { value: 'desc', label: 'По убыванию' },
+  { value: 'asc', label: 'По возрастанию' }
+]
 </script>
